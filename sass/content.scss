@@ -167,7 +167,7 @@ pre {
 
   #formattedJson, #jsonpOpener, #jsonpCloser {
     color: #333 ;
-    font: 13px/18px monospace ;
+    font: 16px/18px Monaco, Consolas, Menlo, Courier, monospace ;
   }
 
   #formattedJson {
@@ -197,7 +197,7 @@ pre {
   }
 
 #formattingMsg {
-  font: 13px "Lucida Grande", "Segoe UI", "Tahoma" ;
+  font: 16px "Lucida Grande", "Segoe UI", "Tahoma" ;
   padding: 10px 0 0 8px ;
   margin: 0 ;
   color: #333 ;
