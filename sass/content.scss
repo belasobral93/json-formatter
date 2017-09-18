@@ -2,7 +2,7 @@
 
 body {
   -webkit-user-select: text ;
-  overflow-y: scroll !important ;
+  overflow-y: auto ;
   margin: 0 ;
   position: relative ;
 }
@@ -77,6 +77,9 @@ body {
 #jsonpCloser {
   padding: 4px 0 0 8px ;
   color: black ;
+}
+
+#jsonpOpener {
   margin-bottom: -6px ;
 }
 
