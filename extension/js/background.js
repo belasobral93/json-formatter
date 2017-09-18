@@ -121,6 +121,11 @@
       return str.join('').slice(2, -2);
     }
 
+  // Utility functions trim whitespace and semicolon
+    function trim(str) {
+      return str.replace(/(^[;\s]+)|([;\s]+$)/g, '');
+    }
+
     function firstJSONCharIndex(s) {
       var arrayIdx = s.indexOf('['),
           objIdx = s.indexOf('{'),
@@ -423,7 +428,7 @@
 
               // Not JSON; could be JSONP though.
               // Try stripping 'padding' (if any), and try parsing it again
-                text = text.trim() ;
+                text = trim(text) ;
                 // Find where the first paren is (and exit if none)
                   var indexOfParen ;
                   if ( ! (indexOfParen = text.indexOf('(') ) ) {
@@ -433,7 +438,7 @@
                   }
                 
                 // Get the substring up to the first "(", with any comments/whitespace stripped out
-                  var firstBit = removeComments( text.substring(0,indexOfParen) ).trim() ;
+                  var firstBit = trim(removeComments( text.substring(0,indexOfParen) )) ;
                   if ( ! firstBit.match(/^[a-zA-Z_$][\.\[\]'"0-9a-zA-Z_$]*$/) ) {
                     // The 'firstBit' is NOT a valid function identifier.
                     port.postMessage(['NOT JSON', 'first bit not a valid function name']) ;
@@ -450,8 +455,8 @@
                   }
                 
                 // Check that what's after the last parenthesis is just whitespace, comments, and possibly a semicolon (exit if anything else)
-                  var lastBit = removeComments(text.substring(indexOfLastParen+1)).trim() ;
-                  if ( lastBit !== "" && lastBit !== ';' ) {
+                  var lastBit = trim(removeComments(text.substring(indexOfLastParen+1))) ;
+                  if ( lastBit !== "" ) {
                     port.postMessage(['NOT JSON', 'last closing paren followed by invalid characters']) ;
                     port.disconnect() ;
                     return ;
